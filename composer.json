@@ -1,0 +1,17 @@
+{
+    "type": "library",
+    "require": {
+        "php": ">=8.1",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.16",
+        "symfony/framework-bundle": "6.3.*",
+        "symfony/security-bundle": "6.3.*",
+        "symfony/serializer": "6.3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ActiveUser\\": "src/"
+        }
+    }
+}

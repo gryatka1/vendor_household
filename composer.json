@@ -1,5 +1,5 @@
 {
-    "name": "active-user",
+    "name": "gryatka1/active-user",
     "type": "library",
     "require": {
         "php": ">=8.1",

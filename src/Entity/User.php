@@ -3,14 +3,24 @@
 namespace ActiveUser\Entity;
 
 use ActiveUser\Repository\UserRepository;
+use App\DTO\AsDTOInterface;
+use ActiveUser\DTO\UserDTO;
+use ActiveUser\Entity\Trait\CreatedAt;
+use ActiveUser\Entity\Trait\SoftDelete;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, AsDTOInterface
 {
+    use CreatedAt;
+    use SoftDelete;
+
     #[ORM\Id]
     #[ORM\GeneratedValue('IDENTITY')]
     #[ORM\Column(type: 'integer')]
@@ -24,6 +34,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private ?string $password = null;
+
+    // many to many
+    #[ORM\ManyToMany(targetEntity: Household::class, mappedBy: 'users')]
+    private Collection $households;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable();
+        $this->households = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -92,5 +112,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getHouseholds(): Collection
+    {
+        return $this->households;
+    }
+
+    public function addHousehold(Household $household): static
+    {
+        if (!$this->households->contains($household)) {
+            $this->households->add($household);
+            $household->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHousehold(Household $household): static
+    {
+        if ($this->households->removeElement($household)) {
+            $household->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    public static function asDTO(AsDTOInterface $user): UserDTO
+    {
+        return new UserDTO($user->getId(), $user->getEmail());
     }
 }

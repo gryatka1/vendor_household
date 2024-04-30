@@ -3,7 +3,7 @@
 namespace ActiveUser\Entity;
 
 use ActiveUser\Repository\UserRepository;
-use App\DTO\AsDTOInterface;
+use Household\DTO\AsDTOInterface;
 use ActiveUser\DTO\UserDTO;
 use ActiveUser\Entity\Trait\CreatedAt;
 use ActiveUser\Entity\Trait\SoftDelete;

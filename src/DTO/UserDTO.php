@@ -3,6 +3,7 @@
 namespace ActiveUser\DTO;
 
 use ActiveUser\DTO\Traits\JsonSerializableTrait;
+use App\DTO\DTOInterface;
 
 class UserDTO implements DTOInterface
 {

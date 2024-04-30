@@ -3,6 +3,7 @@
 namespace ActiveUser\DTO;
 
 use ActiveUser\DTO\Traits\JsonSerializableTrait;
+use App\DTO\DTOInterface;
 use Doctrine\Common\Collections\Collection;
 
 class HouseholdDTO implements DTOInterface

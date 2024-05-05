@@ -22,7 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, AsDTOIn
     use SoftDelete;
 
     #[ORM\Id]
-    #[ORM\GeneratedValue('IDENTITY')]
+    #[ORM\GeneratedValue('SEQUENCE')]
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 

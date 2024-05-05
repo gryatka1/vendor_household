@@ -20,7 +20,7 @@ class Household implements AsDTOInterface
     use SoftDelete;
 
     #[ORM\Id]
-    #[ORM\GeneratedValue('IDENTITY')]
+    #[ORM\GeneratedValue('SEQUENCE')]
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 

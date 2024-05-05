@@ -1,5 +1,5 @@
 {
-    "name": "gryatka1/active-user",
+    "name": "gryatka1/vendor_household",
     "type": "library",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "ActiveUser\\": "src/"
+            "VendorHousehold\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ActiveUser\\Tests\\": "tests/"
+            "VendorHousehold\\Tests\\": "tests/"
         }
     },
     "scripts": {

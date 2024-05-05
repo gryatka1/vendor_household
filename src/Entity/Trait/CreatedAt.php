@@ -1,6 +1,6 @@
 <?php
 
-namespace ActiveUser\Entity\Trait;
+namespace VendorHousehold\Entity\Trait;
 
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;

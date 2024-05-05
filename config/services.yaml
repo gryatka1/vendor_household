@@ -5,14 +5,14 @@ services:
         autowire: true
         autoconfigure: true
 
-    ActiveUser\:
+    VendorHousehold\:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    ActiveUser\Repository\UserRepository:
+    VendorHousehold\Repository\UserRepository:
         tags: ['doctrine.repository_service']
 
     Redis:

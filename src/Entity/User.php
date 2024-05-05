@@ -1,12 +1,12 @@
 <?php
 
-namespace ActiveUser\Entity;
+namespace VendorHousehold\Entity;
 
-use ActiveUser\Repository\UserRepository;
+use VendorHousehold\Repository\UserRepository;
 use Household\DTO\AsDTOInterface;
-use ActiveUser\DTO\UserDTO;
-use ActiveUser\Entity\Trait\CreatedAt;
-use ActiveUser\Entity\Trait\SoftDelete;
+use VendorHousehold\DTO\UserDTO;
+use VendorHousehold\Entity\Trait\CreatedAt;
+use VendorHousehold\Entity\Trait\SoftDelete;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

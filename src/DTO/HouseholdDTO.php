@@ -1,8 +1,8 @@
 <?php
 
-namespace ActiveUser\DTO;
+namespace VendorHousehold\DTO;
 
-use ActiveUser\DTO\Traits\JsonSerializableTrait;
+use VendorHousehold\DTO\Traits\JsonSerializableTrait;
 use Household\DTO\DTOInterface;
 use Doctrine\Common\Collections\Collection;
 

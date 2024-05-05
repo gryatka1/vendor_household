@@ -1,6 +1,6 @@
 <?php
 
-namespace ActiveUser\DTO\Traits;
+namespace VendorHousehold\DTO\Traits;
 
 trait JsonSerializableTrait
 {

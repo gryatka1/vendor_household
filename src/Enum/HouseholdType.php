@@ -1,6 +1,6 @@
 <?php
 
-namespace ActiveUser\Enum;
+namespace VendorHousehold\Enum;
 
 enum HouseholdType: string
 {

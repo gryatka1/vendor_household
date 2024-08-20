@@ -31,11 +31,13 @@ class Household implements AsDTOInterface
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'households')]
     private Collection $users;
 
-    public function __construct(HouseholdType $type)
+    public function __construct(HouseholdType $type, User $user)
     {
         $this->createdAt = new DateTimeImmutable();
         $this->type = $type->value;
         $this->users = new ArrayCollection();
+
+        $this->users->add($user);
     }
 
     public function getId(): ?int

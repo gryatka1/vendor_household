@@ -2,13 +2,10 @@
 
 namespace VendorHousehold\DTO;
 
-use VendorHousehold\DTO\Traits\JsonSerializableTrait;
-use Household\DTO\DTOInterface;
+use JsonSerializable;
 
-class UserDTO implements DTOInterface
+class UserDTO implements JsonSerializable
 {
-    use JsonSerializableTrait;
-
     public function __construct(
         public readonly int $id,
         public readonly string $email,
@@ -24,5 +21,10 @@ class UserDTO implements DTOInterface
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return get_object_vars($this);
     }
 }

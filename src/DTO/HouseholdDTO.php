@@ -2,14 +2,11 @@
 
 namespace VendorHousehold\DTO;
 
-use VendorHousehold\DTO\Traits\JsonSerializableTrait;
-use Household\DTO\DTOInterface;
+use JsonSerializable;
 use Doctrine\Common\Collections\Collection;
 
-class HouseholdDTO implements DTOInterface
+class HouseholdDTO implements JsonSerializable
 {
-    use JsonSerializableTrait;
-
     public function __construct(
         private readonly int $id,
         private readonly string $type,
@@ -32,5 +29,10 @@ class HouseholdDTO implements DTOInterface
     public function getUsers(): Collection
     {
         return $this->users;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return get_object_vars($this);
     }
 }

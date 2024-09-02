@@ -3,8 +3,6 @@
 namespace VendorHousehold\Entity;
 
 use VendorHousehold\Enum\HouseholdType;
-use VendorHousehold\DTO\HouseholdDTO;
-use Household\DTO\AsDTOInterface;
 use VendorHousehold\Entity\Trait\CreatedAt;
 use VendorHousehold\Entity\Trait\SoftDelete;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,7 +12,7 @@ use DateTimeImmutable;
 
 #[ORM\Entity]
 #[ORM\Table(name: '`household`')]
-class Household implements AsDTOInterface
+class Household
 {
     use CreatedAt;
     use SoftDelete;
@@ -45,9 +43,9 @@ class Household implements AsDTOInterface
         return $this->id;
     }
 
-    public function setType(string $type): static
+    public function setType(HouseholdType $type): static
     {
-        $this->type = $type;
+        $this->type = $type->value;
 
         return $this;
     }
@@ -79,14 +77,5 @@ class Household implements AsDTOInterface
         }
 
         return $this;
-    }
-
-    public static function asDTO(AsDTOInterface $household): HouseholdDTO
-    {
-        return new HouseholdDTO(
-            $household->getId(),
-            $household->getType(),
-            $household->getUsers()->map(fn(User $user) => User::asDTO($user))
-        );
     }
 }

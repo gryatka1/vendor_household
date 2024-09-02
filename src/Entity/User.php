@@ -3,7 +3,6 @@
 namespace VendorHousehold\Entity;
 
 use VendorHousehold\Repository\UserRepository;
-use Household\DTO\AsDTOInterface;
 use VendorHousehold\DTO\UserDTO;
 use VendorHousehold\Entity\Trait\CreatedAt;
 use VendorHousehold\Entity\Trait\SoftDelete;
@@ -16,7 +15,7 @@ use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface, AsDTOInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use CreatedAt;
     use SoftDelete;
@@ -136,10 +135,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, AsDTOIn
         }
 
         return $this;
-    }
-
-    public static function asDTO(AsDTOInterface $user): UserDTO
-    {
-        return new UserDTO($user->getId(), $user->getEmail());
     }
 }
